@@ -8,17 +8,31 @@ function Library() {
   const [search, setSearch] = useState("");
   const [submitting, setSubmitting] = useState(false)
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const clear = () => {
     setSearch("");
+    setLoading(true)
+    setSearchTerm("");
+    setLoading(false)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     setSubmitting(true);
     setSearchTerm(search);  // Update searchTerm when the form is submitted
     setSubmitting(false);
+    setLoading(false)
   };
+
+  if(loading){
+    return(
+      <div className="text-3xl">
+        loading...
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col justify-center items-center w-[80vw]">
@@ -49,8 +63,8 @@ function Library() {
           <div></div>
         )}
       </form>
+      
       { searchTerm ? (<Result query={searchTerm}/>) : (<Books/>)
-
       }
     </div>
   );
