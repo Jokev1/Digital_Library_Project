@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BookList from "../temp.json";
 import { StarHalfIcon, StarIcon } from "lucide-react";
 
-function Books({ query }) {
+function Books({ query, filter }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -54,12 +54,16 @@ function Books({ query }) {
   }
 
   // Query Data
-  const filteredBooks = data
-    ? Object.keys(data).filter((key) => {
-        const book = data[key];
-        return book.book_title.toLowerCase().includes(query.toLowerCase());
-      })
-    : [];
+  if(filter){
+
+  } else {
+    const filteredBooks = data
+      ? Object.keys(data).filter((key) => {
+          const book = data[key];
+          return book.book_title.toLowerCase().includes(query.toLowerCase());
+        })
+      : [];
+  }
 
     //Pagination
   const indexOfLastBook = currentPage * booksPerPage;
