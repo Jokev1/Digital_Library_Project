@@ -103,6 +103,7 @@ function Books() {
                   <p className="font-semibold text-lg">{book.book_title}</p>
                   <p className="text-sm line-clamp-1">{book.book_authors.join(", ")}</p>
                   <p className="text-sm line-clamp-[7] font-light">{book.book_desc}</p>
+                  <p className="text-sm line-clamp-1"> {book.genres.join(", ")}</p>
                   <p className=" flex flex-row justify-center items-center absolute bottom-[5%] left-52">{book.book_pages} Pages</p>
                   <p className="flex flex-row justify-center items-center absolute bottom-3 right-5">
                     {renderStars(book.book_rating)} {book.book_rating} {kFormatter(book.book_rating_count)}

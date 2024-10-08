@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
-import BookList from "../temp.json";
+import BookList from "../../temp.json";
 import { StarHalfIcon, StarIcon } from "lucide-react";
+import PropTypes from 'prop-types';
 
-function Books({ query, filter }) {
+Books.propTypes = {
+  query: PropTypes.string.isRequired,
+};
+
+function Books({ query }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -54,16 +59,12 @@ function Books({ query, filter }) {
   }
 
   // Query Data
-  if(filter){
-
-  } else {
     const filteredBooks = data
       ? Object.keys(data).filter((key) => {
           const book = data[key];
           return book.book_title.toLowerCase().includes(query.toLowerCase());
         })
       : [];
-  }
 
     //Pagination
   const indexOfLastBook = currentPage * booksPerPage;
@@ -100,13 +101,13 @@ function Books({ query, filter }) {
                     {renderStars(book.book_rating)} {book.book_rating} {kFormatter(book.book_rating_count)}
                   </p>
     
-    
                   <div className="flex flex-row justify-center items-center scale-0 group-hover:scale-100 transition-all duration-300 absolute bg-gradient-to-b from-slate-950 to-black p-10 rounded-xl z-10 max-h-90 w-[35rem] gap-5 border-indigo-700 border">
                     <img src={book.image_url} alt={book.book_title} className="h-52 w-auto mb-3" />
                     <div className="flex flex-col justify-between items-center w-full h-full gap-2">
                       <p className="font-semibold text-lg">{book.book_title}</p>
                       <p className="text-sm line-clamp-1">{book.book_authors.join(", ")}</p>
                       <p className="text-sm line-clamp-[7] font-light">{book.book_desc}</p>
+                      <p className="text-sm line-clamp-1"> {book.genres.join(", ")}</p>
                       <p className=" flex flex-row justify-center items-center absolute bottom-[5%] left-52">{book.book_pages} Pages</p>
                       <p className="flex flex-row justify-center items-center absolute bottom-3 right-5">
                         {renderStars(book.book_rating)} {book.book_rating} {kFormatter(book.book_rating_count)}
