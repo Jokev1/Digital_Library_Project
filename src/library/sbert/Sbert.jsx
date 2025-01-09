@@ -110,7 +110,7 @@ function Books({ query }) {
   return (
     <div className="w-full">
       {data.length > 0 ? (
-        <div className="grid grid-flow-row grid-cols-4 gap-4 w-full">
+        <div className="grid grid-flow-row grid-cols-4 gap-8 w-full">
           {currentBooks.map((book, index) => {
             return (
               <div

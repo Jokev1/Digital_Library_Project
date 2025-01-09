@@ -166,7 +166,7 @@ const SemanticResult = ({ query }) => {
   return (
     <div className="w-full">
       {results.length > 0 ? (
-        <div className="grid grid-flow-row grid-cols-4 gap-4 w-full">
+        <div className="grid grid-flow-row grid-cols-4 gap-8 w-full">
           {currentBooks.map(({ key, similarity, book }) => (
             <div
               key={key}
@@ -222,7 +222,7 @@ const SemanticResult = ({ query }) => {
         <div>No books found.</div>
       )}
 
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex justify-between items-center mt-4 w-full">
         <button
           className="px-4 py-2 bg-transparent border border-indigo-700 text-indigo-700 rounded cursor-pointer font-semibold"
           disabled={currentPage === 1}
