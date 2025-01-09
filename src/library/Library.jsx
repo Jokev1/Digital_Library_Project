@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import Books from "./Books";
 import Result from "./searchResult/Result";
 import Semantic from "./semantic/SemanticResult";
-import Llama from "./sbert/Result_Llama"
+import Sbert from "./sbert/Sbert"
 
 function Library() {
   const [search, setSearch] = useState("");
@@ -148,7 +148,7 @@ function Library() {
         ) : searchTerm && type === "full-text" ? (
           <Result query={searchTerm} />
         ) : searchTerm && type === "sbert" ? (
-          <Llama query={searchTerm} />
+          <Sbert query={searchTerm} />
         ) : (
           <Books />
         )}

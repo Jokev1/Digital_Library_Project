@@ -49,8 +49,8 @@ function Books({ query }) {
         // Backend request with the query passed to the component
         const response = await axios.post("http://localhost:5000/search", {
           query: query,
-          model_type: "original", // or 'fine_tuned'
-          top_k: 7,
+          model_type: "original", //'fine_tuned' or 'original'
+          top_k: 30,
         });
         console.log(response.data); // Log the response for debugging
 
