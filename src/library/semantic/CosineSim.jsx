@@ -1,5 +1,7 @@
 const cosineSimilarity = (vec1, vec2) => {
   if (!vec1 || !vec2) return 0
+  console.log("vec 1 = " + JSON.stringify(vec1))
+  console.log("vec 2 = " + JSON.stringify(vec2))
   const intersection = new Set([...Object.keys(vec1), ...Object.keys(vec2)])
   const numerator = Array.from(intersection).reduce((sum, key) => sum + (vec1[key] || 0) * (vec2[key] || 0), 0)
   

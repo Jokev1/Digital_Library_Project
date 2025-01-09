@@ -24,6 +24,7 @@ const computeIDF = (documents) => {
   Object.keys(idf).forEach(word => {
     idf[word] = Math.log(n / (idf[word] + 1))
   })
+
   return idf
 }
 

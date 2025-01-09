@@ -3,13 +3,14 @@ import {
   ArrowLeftFromLine,
   Search,
   SlidersHorizontalIcon,
-  TrendingUpDownIcon,
+  TrendingUpDownIcon, BrainCircuitIcon
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Books from "./Books";
 import Result from "./searchResult/Result";
 import Semantic from "./semantic/SemanticResult";
+import Llama from "./sbert/Result_Llama"
 
 function Library() {
   const [search, setSearch] = useState("");
@@ -17,7 +18,7 @@ function Library() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
-  const [type, setType] = useState("semantic");
+  const [type, setType] = useState("sbert");
 
   const clear = () => {
     setSearch("");
@@ -72,7 +73,7 @@ function Library() {
         </div>
         <div className="flex flex-col justify-end items-end">
           <button
-            type="button" // Use type="button" to prevent form submission
+            type="button"
             onClick={handleShowFilter}
             className="flex flex-row bg-transparent gap-3 cursor-pointer hover:drop-shadow-[0_0_20px_rgba(255,255,255,1)] text-white hover:text-indigo-300 text-sm"
           >
@@ -81,12 +82,12 @@ function Library() {
           </button>
           <div
             className={`flex flex-col w-full transition-all ease-in-out duration-300 overflow-hidden ${
-              showFilter ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+              showFilter ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             <section className={`flex flex-row justify-between items-center w-full`}>
               {showFilter && (
-                <div className="flex w-full border border-indigo-600 rounded-lg bg-gradient-to-b from-slate-950 to-black ">
+                <div className="flex w-full rounded-lg ">
                   <div className="flex flex-col w-full p-5 gap-5">
                     <label
                       htmlFor="Semantic-Simple"
@@ -118,6 +119,21 @@ function Library() {
                       <ALargeSmallIcon />
                       Full Text
                     </label>
+                    <label
+                      htmlFor="AI"
+                      className={`flex flex-row rounded-lg hover:bg-indigo-700 p-5 gap-5 ${type === "sbert" ? "underline" : ""}`}
+                    >
+                      <input
+                        id="AI"
+                        type="radio"
+                        name="search-type"
+                        value="sbert"
+                        checked={type === "sbert"}
+                        onChange={handleTypeChange}
+                      />
+                      <BrainCircuitIcon />
+                      AI Semantic
+                    </label>
                   </div>
                 </div>
               )}
@@ -131,6 +147,8 @@ function Library() {
           <Semantic query={searchTerm} />
         ) : searchTerm && type === "full-text" ? (
           <Result query={searchTerm} />
+        ) : searchTerm && type === "sbert" ? (
+          <Llama query={searchTerm} />
         ) : (
           <Books />
         )}

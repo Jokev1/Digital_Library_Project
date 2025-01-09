@@ -17,10 +17,10 @@ function Books() {
   
     const stars = [];
     for (let i = 0; i < filledStars; i++) {
-      stars.push(<StarIcon size={15} color="#ffdd00" key={`star-filled-${i}`} />); // Filled star
+      stars.push(<StarIcon size={15} color="#ffdd00" key={`star-filled-${i}`} />); // full
     }
     for (let i = 0; i < decimalPart; i++) {
-      stars.push(<StarHalfIcon size={15} color="#ffdd00" key={`star-half-${i}`} />); // Half-filled star
+      stars.push(<StarHalfIcon size={15} color="#ffdd00" key={`star-half-${i}`} />); // half
     }
   
     return <div style={{ display: "flex" }}>{stars}</div>;
