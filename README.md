@@ -8,7 +8,7 @@ Final project for <b> Content management and digital library techniques-2024-202
 * Derrick Julian - 3820241075
 * Felix Sutanto Putra - 3820241078
 * Gregorius Justin Chung - 3820241069
-* Julio Uriostegui - 38202410
+* Julio Uriostegui - 3820249026
 
 ## Requirements
 
